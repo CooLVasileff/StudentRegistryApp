@@ -10,27 +10,22 @@ pipeline{
     stages{
         stage('Checkout'){
             steps{
-                Checkout scm
+                git branch: "main", url: 'https://github.com/CooLVasileff/StudentRegistryApp'
             }
         }
         stage('Install Dependencies'){
             steps{
                 script{
-                    if(isUnix()){
-                        sh 'npm install'
-                    }
-                    else{
-                        sh 'npm install'
-                    }
+                        bat 'npm install'
                 }
             }
         }
         stage('Start App and run tests'){
             steps{
                 script{
-                    sh 'npm start &'
-                    sh 'wait-on http://localhost:9091'
-                    sh 'test'
+                    bat 'npm start &'
+                    bat 'wait-on http://localhost:9091'
+                    bat 'test'
                 }
             }
         }
