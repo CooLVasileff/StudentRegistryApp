@@ -10,6 +10,8 @@ on:
     branches: [ "main" ]
 
 jobs:
+  permissions:
+    content: write
   build:
 
     runs-on: ubuntu-latest
